@@ -20,12 +20,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        super.configure(web);
+        web.ignoring().antMatchers("/js/**", "/images/**", "/css/**");
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        http.authorizeRequests()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login.html")
+                .permitAll()
+                .and()
+                .csrf().disable();
     }
 
     @Override

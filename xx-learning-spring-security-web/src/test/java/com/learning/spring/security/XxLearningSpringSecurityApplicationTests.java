@@ -8,6 +8,7 @@ class XxLearningSpringSecurityApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }
